@@ -42,14 +42,19 @@
     }
 
     $reponse = $bdd->query('SELECT * FROM articles ORDER BY id DESC  LIMIT 0, 5');
-
+//     $rep = $reponse->fetchAll();
+// foreach ($rep as $key => $donnees) {
+//   # code...
+// }
     while ($donnees = $reponse->fetch()) {
         ?>
     <h1><?php echo $donnees['titre']; ?></h1>
     <p>
       <?php echo $donnees['contenu']; ?><br>
       <?php echo $donnees['date_creation']; ?>
+      <a href="comments.php?contents=<?php echo $donnees['id']?>">Comments</a>
     </p>
+
 
 <?php
     }
