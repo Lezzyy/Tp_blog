@@ -32,20 +32,19 @@
     <![endif]-->
 
     <!-- TU CODES ICI -->
+<h1 class='text-center'>BLOG</h1>
+
     <?php
     try {
-      $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'gj7b!17LA');
-    }
-    catch(Exception $e)
-    {
-      die('Erreur :'. $e->getMessage());
+        $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'gj7b!17LA');
+    } catch (Exception $e) {
+        die('Erreur :'. $e->getMessage());
     }
 
     $reponse = $bdd->query('SELECT * FROM articles ORDER BY id DESC  LIMIT 0, 5');
 
-    while ($donnees = $reponse->fetch())
-    {
-    ?>
+    while ($donnees = $reponse->fetch()) {
+        ?>
     <h1><?php echo $donnees['titre']; ?></h1>
     <p>
       <?php echo $donnees['contenu']; ?><br>
