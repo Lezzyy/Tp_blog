@@ -3,6 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Comments</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
   </head>
   <body>
     <?php
@@ -19,7 +29,7 @@ $req->execute(array($article));
 
 $donnees = $req->fetch();
 ?>
-<h1><?php echo $donnees['titre']; ?></h1>
+<h1 class="text-center"><?php echo $donnees['titre']; ?></h1>
 <p>
   <?php echo $donnees['contenu']; ?><br>
   <?php echo $donnees['date_creation']; ?>
@@ -30,16 +40,15 @@ $req->closeCursor();
 
 <?php
 
-$req = $bdd->prepare('SELECT comments.auteur FROM comments INNER JOIN articles ON articles.id = comments.id_articles');
+// $req = $bdd->prepare('SELECT comments.auteur FROM comments INNER JOIN articles ON articles.id = comments.id_articles');
 
 
-$req = $bdd->prepare('SELECT * FROM comments, articles WHERE comments.id_articles=articles.id');
-$req->execute(array('comments.id_articles'));
+$req = $bdd->prepare('SELECT * FROM comments WHERE comments.id_articles=?');
+$req->execute(array($article));
 
-$info = $req->fetch();
+while ($info = $req->fetch()){
 
 ?>
-
 <h3>Commentaires :</h3>
 <p>
   <?php echo $info['auteur']." : "; ?><br>
@@ -47,7 +56,9 @@ $info = $req->fetch();
   <?php echo $info['date_commentaire']; ?>
 </p>
 
+
 <?php
+}
 $req->closeCursor();
   ?>
 
