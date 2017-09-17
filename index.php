@@ -18,7 +18,7 @@
     <link rel="icon" href="favicon.png" type="image/x-icon">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Skranji" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Skranji|Sedgwick+Ave" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -32,7 +32,11 @@
     <![endif]-->
 
     <!-- TU CODES ICI -->
-<h1 class='text-center'>BLOG</h1>
+    <div class="container-fluid">
+      <div class="rock">
+<h1 class='text-center'>ROCK'N BLOG</h1>
+</div>
+</div>
 
     <?php
     try {
@@ -48,12 +52,19 @@
 // }
     while ($donnees = $reponse->fetch()) {
         ?>
+    <div class="container">
+      <div class="row">
+        <div class="title">
+
     <h1><?php echo $donnees['titre']; ?></h1>
-    <p>
+  </div>
+    <p class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
       <?php echo $donnees['contenu']; ?><br>
       <?php echo $donnees['date_creation']; ?>
       <a href="comments.php?contents=<?php echo $donnees['id']?>">Comments</a>
     </p>
+  </div>
+</div>
 
 
 <?php

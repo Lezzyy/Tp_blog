@@ -94,7 +94,34 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body{
+background-color:black;
+}
 
+.title h1{
+  margin-bottom: 5px;
+  margin-top: 45px;
+  color: white;
+  background-color: #450003;
+  font-family: 'Sedgwick Ave', cursive;
+  width: 400px;
+}
+
+.rock h1{
+  background-color: #450003;
+  font-family: 'Sedgwick Ave', cursive;
+    color: white;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+p{
+  background-color: white;
+  margin-top: 30px;
+}
 
 
 
