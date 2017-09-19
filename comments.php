@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Comments</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
-  </head>
-  <body>
-    <?php
+<?php
+    include('header.php');
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'gj7b!17LA');
     } catch (Exception $e) {
@@ -29,10 +13,17 @@ $req->execute(array($article));
 
 $donnees = $req->fetch();
 ?>
+<div class="container">
+  <div class="row">
+    <div class="title">
 <h1 class="text-center"><?php echo $donnees['titre']; ?></h1>
-<p>
+</div>
+<p class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
   <?php echo $donnees['contenu']; ?><br>
   <?php echo $donnees['date_creation']; ?>
+</p>
+</div>
+</div>
 
 <?php
 $req->closeCursor();
@@ -49,11 +40,18 @@ $req->execute(array($article));
 while ($info = $req->fetch()){
 
 ?>
-<h3>Commentaires :</h3>
-<p>
+<div class="container-fluid">
+      <div class="title">
+<h1>Commentaires :</h1>
+</div>
+</div>
+
+<div class="container">
+<p class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
   <?php echo $info['auteur']." : "; ?><br>
   <?php echo $info['commentaire']; ?><br>
   <?php echo $info['date_commentaire']; ?>
+</div>
 </p>
 
 

@@ -1,44 +1,6 @@
-<!doctype html>
-<html class="no-js" lang="FR">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php
+    include('header.php');
 
-    <title>Blog</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Skranji|Sedgwick+Ave" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-  </head>
-
-  <body>
-    <!--[if lt IE 8]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- TU CODES ICI -->
-    <div class="container-fluid">
-      <div class="rock">
-<h1 class='text-center'>ROCK'N BLOG</h1>
-</div>
-</div>
-
-    <?php
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'gj7b!17LA');
     } catch (Exception $e) {
@@ -55,12 +17,11 @@
     <div class="container">
       <div class="row">
         <div class="title">
-
-    <h1><?php echo $donnees['titre']; ?></h1>
+    <h1 class="text-center"><?php echo $donnees['titre']; ?></h1>
   </div>
     <p class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+      <?php echo $donnees['date_creation']; ?><br>
       <?php echo $donnees['contenu']; ?><br>
-      <?php echo $donnees['date_creation']; ?>
       <a href="comments.php?contents=<?php echo $donnees['id']?>">Comments</a>
     </p>
   </div>
